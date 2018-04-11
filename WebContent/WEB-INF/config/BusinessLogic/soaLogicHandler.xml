@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="gb2312"?>
+
+<business-logic-config>
+
+	<handler-mappings>
+
+		<!--获取监控指标值的业务逻辑处理器，需要与MONITOR框架配合起来使用 -->
+		<handler name="StatisticalLogicHandler" pool-name=""
+			type="cn.com.jdls.foundation.logic.handlers.StatisticalLogicHandler" />
+
+		<!--通用的执行SQL语句的业务逻辑处理器 -->
+		<handler name="sqlLogic" pool-name=""
+			type="cn.com.jdls.foundation.logic.handlers.SqlHandler" />
+
+		<!--通用登陆的业务逻辑处理器 -->
+		<handler name="LoginLogicHandler" pool-name=""
+			type="cn.com.jdls.foundation.logic.handlers.LoginLogicHandler" />
+
+		<!--通用查询的业务逻辑处理器 -->
+		<handler name="QueryLogicHandler" pool-name=""
+			type="cn.com.jdls.foundation.logic.handlers.QueryLogicHandler" />
+
+		<!--通用增加类型的业务逻辑处理器 -->
+		<handler name="AddLogicHandler" pool-name=""
+			type="cn.com.jdls.foundation.logic.handlers.AddLogicHandler" />
+
+		<!--通用修改类型的业务逻辑处理器 -->
+		<handler name="EditLogicHandler" pool-name=""
+			type="cn.com.jdls.foundation.logic.handlers.EditLogicHandler" />
+
+		<!--请求直接委派给ActionFramework去处理的业务逻辑处理器 -->
+		<handler name="ActionDispatchHandler" pool-name=""
+			type="cn.com.jdls.foundation.logic.handlers.ActionDispatchHandler" />
+
+		<!--通用XML文件读写的业务逻辑处理器 -->
+		<handler name="XmlLogicHandler" pool-name=""
+			type="cn.com.jdls.foundation.logic.handlers.XmlLogicHandler" />
+
+		<!--通用执行DAO任务的业务逻辑处理器 -->
+		<handler name="DAOTaskHandler" pool-name=""
+			type="cn.com.jdls.foundation.logic.handlers.DAOTaskHandler" />
+
+		<!--通用的使用JASPERREPORT进行打印的业务逻辑处理器 -->
+		<handler name="JdlsReportHandler" pool-name=""
+			type="cn.com.jdls.foundation.logic.handlers.JdlsReportHandler" />
+
+	</handler-mappings>
+
+</business-logic-config>

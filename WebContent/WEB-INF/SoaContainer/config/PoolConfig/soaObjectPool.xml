@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<pool>
+
+<!--
+  <object-pool>
+    <name>Rule2File</name>
+    <class_name>cn.com.jdls.foundation.xml.Rule2File</class_name>
+    <debug>0</debug>
+    <singleton>true</singleton>
+    <default>false</default>
+    <initial>150</initial>
+    <max>200</max>
+    <max_idle>200</max_idle>
+    <min>20</min>
+    <step_idle>5</step_idle>
+    <time_out>60000</time_out>
+    <pool_queue></pool_queue>
+  </object-pool>
+-->
+
+  <object-pool>
+    <name>MONITOR_TYPE_VAR_PARSER</name>
+    <class_name>cn.com.jdls.foundation.monitor.MonitorVarParser</class_name>
+    <debug>0</debug>
+    <singleton>true</singleton>
+    <default>false</default>
+    <initial>150</initial>
+    <max>200</max>
+    <max_idle>200</max_idle>
+    <min>20</min>
+    <step_idle>5</step_idle>
+    <time_out>60000</time_out>
+    <pool_queue></pool_queue>
+  </object-pool>
+  
+<!--
+  <object-pool>
+    <name>XML_TYPE_VAR_PARSER</name>
+    <class_name>cn.com.jdls.foundation.verifyparser.XmlVarParser</class_name>
+    <debug>0</debug>
+    <singleton>true</singleton>
+    <default>false</default>
+    <initial>150</initial>
+    <max>200</max>
+    <max_idle>200</max_idle>
+    <min>20</min>
+    <step_idle>5</step_idle>
+    <time_out>60000</time_out>
+    <pool_queue></pool_queue>
+  </object-pool>
+  -->
+  
+  <object-pool>
+    <name>HTML_TYPE_VAR_PARSER</name>
+    <class_name>cn.com.jdls.foundation.webfaster.HtmlVarParser</class_name>
+    <debug>0</debug>
+    <singleton>true</singleton>
+    <default>false</default>
+    <initial>150</initial>
+    <max>200</max>
+    <max_idle>200</max_idle>
+    <min>20</min>
+    <step_idle>5</step_idle>
+    <time_out>60000</time_out>
+    <pool_queue></pool_queue>
+  </object-pool>
+
+  <object-pool>
+    <name>SYS_TYPE_VAR_PARSER</name>
+    <class_name>cn.com.jdls.foundation.compiler.SysVarParser</class_name>
+    <debug>0</debug>
+    <singleton>true</singleton>
+    <default>false</default>
+    <initial>150</initial>
+    <max>200</max>
+    <max_idle>200</max_idle>
+    <min>20</min>
+    <step_idle>5</step_idle>
+    <time_out>60000</time_out>
+    <pool_queue></pool_queue>
+  </object-pool>
+
+  <object-pool>
+    <name>listener_handle</name>
+    <class_name>cn.com.jdls.foundation.service.Listener</class_name>
+    <debug>0</debug>
+    <singleton>false</singleton>
+    <default>false</default>
+    <initial>10</initial>
+    <max>20</max>
+    <max_idle>20</max_idle>
+    <min>1</min>
+    <step_idle>1</step_idle>
+    <time_out>60000</time_out>
+    <pool_queue></pool_queue>
+  </object-pool>
+
+  <object-pool>
+    <name>proxy_handle</name>
+    <class_name>cn.com.jdls.foundation.service.ProxyHandle</class_name>
+    <debug>0</debug>
+    <singleton>true</singleton>
+    <default>false</default>
+    <initial>200</initial>
+    <max>200</max>
+    <max_idle>200</max_idle>
+    <min>20</min>
+    <step_idle>5</step_idle>
+    <time_out>60000</time_out>
+    <pool_queue></pool_queue>
+  </object-pool>
+
+  <object-pool>
+    <name>business_handle</name>
+    <class_name>cn.com.jdls.foundation.service.BusinessHandle</class_name>
+    <debug>0</debug>
+    <singleton>true</singleton>
+    <default>false</default>
+    <initial>200</initial>
+    <max>200</max>
+    <max_idle>200</max_idle>
+    <min>20</min>
+    <step_idle>5</step_idle>
+    <time_out>60000</time_out>
+    <pool_queue></pool_queue>
+  </object-pool>
+
+  <object-pool>
+    <name>control_handle</name>
+    <class_name>cn.com.jdls.foundation.service.ControlHandle</class_name>
+    <debug>0</debug>
+    <singleton>true</singleton>
+    <default>false</default>
+    <initial>200</initial>
+    <max>200</max>
+    <max_idle>200</max_idle>
+    <min>20</min>
+    <step_idle>5</step_idle>
+    <time_out>60000</time_out>
+    <pool_queue></pool_queue>
+  </object-pool>
+
+  <object-pool>
+    <name>serve1</name>
+    <class_name>cn.com.jdls.foundation.service.test.InsertTable</class_name>
+    <debug>0</debug>
+    <singleton>false</singleton>
+    <default>false</default>
+    <initial>150</initial>
+    <max>200</max>
+    <max_idle>200</max_idle>
+    <min>20</min>
+    <step_idle>5</step_idle>
+    <time_out>60000</time_out>
+    <pool_queue></pool_queue>
+  </object-pool>
+
+  <object-pool>
+    <name>receive_file</name>
+    <class_name>cn.com.jdls.foundation.service.test.FileReceiver</class_name>
+    <debug>0</debug>
+    <singleton>false</singleton>
+    <default>false</default>
+    <initial>150</initial>
+    <max>200</max>
+    <max_idle>200</max_idle>
+    <min>20</min>
+    <step_idle>5</step_idle>
+    <time_out>60000</time_out>
+    <pool_queue></pool_queue>
+  </object-pool>
+
+  <object-pool>
+    <name>ClientSbServe</name>
+    <class_name>cn.com.jdls.foundation.service.test.ClientSbServe</class_name>
+    <debug>0</debug>
+    <singleton>false</singleton>
+    <default>false</default>
+    <initial>150</initial>
+    <max>200</max>
+    <max_idle>200</max_idle>
+    <min>20</min>
+    <step_idle>5</step_idle>
+    <time_out>60000</time_out>
+    <pool_queue></pool_queue>
+  </object-pool>
+
+  <object-pool>
+    <name>HTTPMirror</name>
+    <class_name>cn.com.jdls.foundation.service.test.HTTPMirror</class_name>
+    <debug>0</debug>
+    <singleton>false</singleton>
+    <default>false</default>
+    <initial>150</initial>
+    <max>200</max>
+    <max_idle>200</max_idle>
+    <min>20</min>
+    <step_idle>5</step_idle>
+    <time_out>60000</time_out>
+    <pool_queue></pool_queue>
+  </object-pool>
+
+
+  <object-pool>
+    <name>FileSendServe</name>
+    <class_name>cn.com.jdls.foundation.service.FileSendServe</class_name>
+    <debug>0</debug>
+    <singleton>true</singleton>
+    <default>false</default>
+    <initial>150</initial>
+    <max>200</max>
+    <max_idle>200</max_idle>
+    <min>20</min>
+    <step_idle>5</step_idle>
+    <time_out>60000</time_out>
+    <pool_queue></pool_queue>
+  </object-pool>
+
+  <object-pool>
+    <name>FileReceiveServe</name>
+    <class_name>cn.com.jdls.foundation.service.FileReceiveServe</class_name>
+    <debug>0</debug>
+    <singleton>true</singleton>
+    <default>false</default>
+    <initial>150</initial>
+    <max>200</max>
+    <max_idle>200</max_idle>
+    <min>20</min>
+    <step_idle>5</step_idle>
+    <time_out>60000</time_out>
+    <pool_queue></pool_queue>
+  </object-pool>
+
+   <object-pool>
+    <name>ConsoleLogService</name>
+    <class_name>cn.com.jdls.foundation.service.ConsoleLogService</class_name>
+    <debug>0</debug>
+    <singleton>true</singleton>
+    <default>false</default>
+    <initial>150</initial>
+    <max>200</max>
+    <max_idle>200</max_idle>
+    <min>20</min>
+    <step_idle>5</step_idle>
+    <time_out>60000</time_out>
+    <pool_queue></pool_queue>
+  </object-pool>
+  
+</pool>
+
+
+

@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="gb2312"?>
+
+<soaServiceChoreography>
+
+  <choreography>
+    <serviceId>jdls.soa.logic.webservice.invoke</serviceId>
+    <serviceName>通用Webservice业务构件调用适配器</serviceName>
+    <globalParam>
+    </globalParam>
+    <serviceNodes>
+        <node id="start" serviceId="start" name="开始" x="56" y="96" type="start" />
+        <node id="end" serviceId="end" name="结束" x="360" y="96" type="end" />
+        <node id="jdls.soa.logic.webservice.doSOAP" serviceId="jdls.soa.logic.webservice.doSOAP" name="通用SOAP-WebService调用构件" x="208" y="96" type="basic" />
+    </serviceNodes>
+    <serviceTransitions>
+    <transition>
+      <fromNode>start</fromNode>
+      <toNode>jdls.soa.logic.webservice.doSOAP</toNode>
+      <conditionScript>true</conditionScript>
+      <paramMappings>
+          <param id="SOAPUrl" name="SOAP请求的URL" valueScript="[url]" />
+          <param id="SOAPAction" name="SOAP请求的ACTION" valueScript="" />
+          <param id="SOAPRequestMessage" name="SOAP请求消息" valueScript="&quot;&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=\&quot;http://schemas.xmlsoap.org/soap/envelope/\&quot; xmlns:xsd=\&quot;http://www.w3.org/2001/XMLSchema\&quot; xmlns:xsi=\&quot;http://www.w3.org/2001/XMLSchema-instance\&quot; xmlns:SOAP-ENC=\&quot;http://schemas.xmlsoap.org/soap/encoding/\&quot;&gt;&quot;+
+&quot;      &lt;SOAP-ENV:Body&gt;&quot;+
+&quot;         &lt;doService&gt;&quot;+
+&quot;            &lt;serviceId&gt;[serviceId]&lt;/serviceId&gt;&quot;+
+&quot;            &lt;input&gt;&quot;+StringUtil.toEncodedXml(get(&quot;input&quot;))+&quot;&lt;/input&gt;&quot;+
+&quot;            &lt;userId&gt;&quot;+serviceContext.getUserId()+&quot;&lt;/userId&gt;&quot;+
+&quot;            &lt;password&gt;&quot;+serviceContext.getPassword()+&quot;&lt;/password&gt;&quot;+
+&quot;            &lt;globalTransaction&gt;&quot;+serviceContext.isGlobalTransaction()+&quot;&lt;/globalTransaction&gt;&quot;+
+&quot;         &lt;/doService&gt;&quot;+
+&quot;      &lt;/SOAP-ENV:Body&gt;&quot;+
+&quot;   &lt;/SOAP-ENV:Envelope&gt;&quot;" />
+      </paramMappings>
+    </transition>
+    <transition>
+      <fromNode>jdls.soa.logic.webservice.doSOAP</fromNode>
+      <toNode>end</toNode>
+      <conditionScript>true</conditionScript>
+      <paramMappings>
+          <param id="output" name="输出参数XML" valueScript="getXmlNodeValue(get(&quot;jdls.soa.logic.webservice.doSOAP.out.SOAPResponseMessage&quot;),&quot;doServiceReturn&quot;)" />
+          <param id="error" name="错误信息" valueScript="" />
+      </paramMappings>
+    </transition>
+    </serviceTransitions>
+    <onErrorNode>end</onErrorNode>
+  </choreography>
+
+<choreography>
+		<serviceId>servyou.soa.developtool.deployServer</serviceId>
+		<serviceName>自动部署服务</serviceName>
+		<globalParam>
+		</globalParam>
+		<serviceNodes>
+			<node id="start" serviceId="start" name="开始" x="24" y="16" width="80" height="80" type="start"/>
+			<node id="end" serviceId="end" name="结束" x="752" y="16" width="80" height="80" type="end"/>
+			<node id="jdls.soa.logic.socket.upload" serviceId="jdls.soa.logic.socket.upload" name="上传部署文件" x="328" y="296" width="80" height="56" type="basic"/>
+			<node id="jdls.soa.logic.calculateLogic" serviceId="jdls.soa.logic.calculateLogic" name="等待服务启动完成" x="648" y="296" width="64" height="56" type="basic"/>
+			<node id="jdls.soa.logic.socket.download" serviceId="jdls.soa.logic.socket.download" name="下载日志文件" x="752" y="296" width="80" height="56" type="basic"/>
+			<node id="jdls.soa.logic.soa.soaAdaptorService" serviceId="jdls.soa.logic.soa.soaAdaptorService" name="远程重启应用" x="520" y="296" width="80" height="56" type="basic"/>
+			<node id="jdls.soa.logic.file.zip" serviceId="jdls.soa.logic.file.zip" name="待部署文件压缩" x="328" y="168" width="80" height="56" type="basic"/>
+			<node id="jdls.soa.logic.soa.soaAdaptorService1" serviceId="jdls.soa.logic.soa.soaAdaptorService" name="远程解压缩" x="520" y="168" width="80" height="56" type="basic"/>
+			<node id="jdls.soa.logic.switchLogic1" serviceId="jdls.soa.logic.switchLogic" name="检测是否存在待部署文件？" x="128" y="16" width="168" height="80" type="basic"/>
+			<node id="jdls.soa.logic.switchLogic" serviceId="jdls.soa.logic.switchLogic" name="是否是目录部署？" x="152" y="168" width="124" height="56" type="basic"/>
+		</serviceNodes>
+		<serviceTransitions>
+			<transition>
+				<fromNode>jdls.soa.logic.socket.download</fromNode>
+				<toNode>end</toNode>
+				<conditionScript>true</conditionScript>
+				<beforeScript></beforeScript>
+				<paramMappings>
+				</paramMappings>
+			</transition>
+			<transition>
+				<fromNode>jdls.soa.logic.file.zip</fromNode>
+				<toNode>jdls.soa.logic.socket.upload</toNode>
+				<conditionScript>true</conditionScript>
+				<beforeScript></beforeScript>
+				<paramMappings>
+					<param id="ip" name="服务器地址" valueScript="&quot;[ip]&quot;"/>
+					<param id="port" name="服务器端口" valueScript="&quot;[fileServerPort]&quot;"/>
+					<param id="fileName" name="需要上传的文件" valueScript="tempZipFileName"/>
+					<param id="destPath" name="目标服务器路径" valueScript="&quot;[destPath]&quot;"/>
+					<param id="append" name="是否断点续传" valueScript="&quot;false&quot;"/>
+				</paramMappings>
+			</transition>
+			<transition>
+				<fromNode>jdls.soa.logic.socket.upload</fromNode>
+				<toNode>jdls.soa.logic.soa.soaAdaptorService1</toNode>
+				<conditionScript>!isFile</conditionScript>
+				<beforeScript></beforeScript>
+				<paramMappings>
+					<param id="ip" name="服务器地址" valueScript="&quot;[ip]&quot;"/>
+					<param id="port" name="服务器端口" valueScript="&quot;[port]&quot;"/>
+					<param id="serviceId" name="服务ID" valueScript="&quot;jdls.soa.logic.file.unzip&quot;"/>
+					<param id="input" name="输入参数HASHMAP" valueScript="HashMap input = new HashMap();input.put(&quot;zipFileName&quot;,&quot;[destPath]&quot;+&quot;/&quot;+new File(tempZipFileName).getName());input.put(&quot;destPath&quot;,&quot;[destPath]&quot;);input.put(&quot;deleteZipFile&quot;,&quot;true&quot;);return input;"/>
+				</paramMappings>
+			</transition>
+			<transition>
+				<fromNode>jdls.soa.logic.soa.soaAdaptorService1</fromNode>
+				<toNode>jdls.soa.logic.soa.soaAdaptorService</toNode>
+				<conditionScript>true</conditionScript>
+				<beforeScript>FileUtil.deleteFile(tempZipFileName);</beforeScript>
+				<paramMappings>
+					<param id="ip" name="服务器地址" valueScript="&quot;[ip]&quot;"/>
+					<param id="port" name="服务器端口" valueScript="&quot;[port]&quot;"/>
+					<param id="serviceId" name="服务ID" valueScript="&quot;jdls.soa.logic.shellCommand&quot;"/>
+					<param id="input" name="输入参数HASHMAP" valueScript="String script = &quot;[restartCmd]&quot;;HashMap input = new HashMap();input.put(&quot;command&quot;,script);input.put(&quot;asynExecute&quot;,&quot;true&quot;);return input;"/>
+				</paramMappings>
+			</transition>
+			<transition>
+				<fromNode>jdls.soa.logic.soa.soaAdaptorService</fromNode>
+				<toNode>jdls.soa.logic.calculateLogic</toNode>
+				<conditionScript>true</conditionScript>
+				<beforeScript>try {
+      Thread.currentThread().sleep([restartTimeLong]);
+    }
+    catch (Exception ex) {
+    }</beforeScript>
+				<paramMappings>
+					<param id="script" name="运算脚本" valueScript=""/>
+				</paramMappings>
+			</transition>
+			<transition>
+				<fromNode>jdls.soa.logic.calculateLogic</fromNode>
+				<toNode>jdls.soa.logic.socket.download</toNode>
+				<conditionScript>true</conditionScript>
+				<beforeScript></beforeScript>
+				<paramMappings>
+					<param id="ip" name="服务器地址" valueScript="&quot;[ip]&quot;"/>
+					<param id="port" name="服务器端口" valueScript="&quot;[fileServerPort]&quot;"/>
+					<param id="fileName" name="需要下载的文件" valueScript="&quot;[logFileName]&quot;"/>
+					<param id="destPath" name="下载目标路径" valueScript="&quot;[logPath]&quot;"/>
+					<param id="append" name="是否断点续传" valueScript="&quot;false&quot;"/>
+				</paramMappings>
+			</transition>
+			<transition>
+				<fromNode>start</fromNode>
+				<toNode>jdls.soa.logic.switchLogic1</toNode>
+				<conditionScript>true</conditionScript>
+				<beforeScript>File f=new File("[sourcePath]");
+boolean existsSourcePath = f.exists();
+boolean isFile = f.isFile();
+if(existsSourcePath&amp;&amp;(!isFile)){
+  String[] ss = f.list();
+    if((ss==null)||(ss.length==0)){
+        existsSourcePath=false;
+    }
+}</beforeScript>
+				<paramMappings>
+				</paramMappings>
+			</transition>
+			<transition>
+				<fromNode>jdls.soa.logic.switchLogic1</fromNode>
+				<toNode>end</toNode>
+				<conditionScript>!existsSourcePath</conditionScript>
+				<beforeScript>serviceVO.setError("没有发现待部署的任何文件！");</beforeScript>
+				<paramMappings>
+					<param id="error" name="错误信息" valueScript=""/>
+				</paramMappings>
+			</transition>
+			<transition>
+				<fromNode>jdls.soa.logic.switchLogic1</fromNode>
+				<toNode>jdls.soa.logic.switchLogic</toNode>
+				<conditionScript>existsSourcePath</conditionScript>
+				<beforeScript></beforeScript>
+				<paramMappings>
+				</paramMappings>
+			</transition>
+			<transition>
+				<fromNode>jdls.soa.logic.switchLogic</fromNode>
+				<toNode>jdls.soa.logic.file.zip</toNode>
+				<conditionScript>!isFile</conditionScript>
+				<beforeScript>String tempZipFilePath = FileUtil.formatFilePath(System.getProperty("user.dir")+"/temp/");
+String tempZipFileName = tempZipFilePath+SysUtil.getSysDate("yyyyMMddHHmmss")+"_"+SysUtil.getRandomStr(4)+".zip";</beforeScript>
+				<paramMappings>
+					<param id="sourcePath" name="源文件目录" valueScript="&quot;[sourcePath]&quot;"/>
+					<param id="zipFileName" name="压缩目标文件" valueScript="tempZipFileName"/>
+				</paramMappings>
+			</transition>
+			<transition>
+				<fromNode>jdls.soa.logic.switchLogic</fromNode>
+				<toNode>jdls.soa.logic.socket.upload</toNode>
+				<conditionScript>isFile</conditionScript>
+				<beforeScript></beforeScript>
+				<paramMappings>
+					<param id="ip" name="服务器地址" valueScript="&quot;[ip]&quot;"/>
+					<param id="port" name="服务器端口" valueScript="&quot;[fileServerPort]&quot;"/>
+					<param id="fileName" name="需要上传的文件" valueScript="&quot;[sourcePath]&quot;"/>
+					<param id="destPath" name="目标服务器路径" valueScript="&quot;[destPath]&quot;"/>
+					<param id="append" name="是否断点续传" valueScript="&quot;false&quot;"/>
+				</paramMappings>
+			</transition>
+			<transition>
+				<fromNode>jdls.soa.logic.socket.upload</fromNode>
+				<toNode>jdls.soa.logic.soa.soaAdaptorService</toNode>
+				<conditionScript>isFile</conditionScript>
+				<beforeScript></beforeScript>
+				<paramMappings>
+					<param id="ip" name="服务器地址" valueScript="&quot;[ip]&quot;"/>
+					<param id="port" name="服务器端口" valueScript="&quot;[port]&quot;"/>
+					<param id="serviceId" name="服务ID" valueScript="&quot;jdls.soa.logic.shellCommand&quot;"/>
+					<param id="input" name="输入参数HASHMAP" valueScript="String script = &quot;[restartCmd]&quot;;HashMap input = new HashMap();input.put(&quot;command&quot;,script);input.put(&quot;asynExecute&quot;,&quot;true&quot;);return input;"/>
+				</paramMappings>
+			</transition>
+		</serviceTransitions>
+		<onErrorNode>end</onErrorNode>
+	</choreography>
+
+	<choreography>
+		<serviceId>servyou.soa.developtool.autoIntegrationService</serviceId>
+		<serviceName>自动集成服务</serviceName>
+		<globalParam>
+		</globalParam>
+		<serviceNodes>
+			<node id="start" serviceId="start" name="开始" x="0" y="56" width="80" height="80" type="start"/>
+			<node id="end" serviceId="end" name="结束" x="704" y="336" width="80" height="80" type="end"/>
+			<node id="servyou.soa.developtool.IntegrationPrepareService" serviceId="servyou.soa.developtool.IntegrationPrepareService" name="集成准备服务" x="128" y="56" width="80" height="80" type="basic"/>
+			<node id="servyou.soa.developtool.IntegrationExecuteService" serviceId="servyou.soa.developtool.IntegrationExecuteService" name="集成打包服务" x="256" y="56" width="80" height="80" type="basic"/>
+			<node id="servyou.soa.developtool.IntegrationNotifyService" serviceId="servyou.soa.developtool.IntegrationNotifyService" name="集成结果通知服务" x="560" y="336" width="80" height="80" type="basic"/>
+			<node id="servyou.soa.developtool.deployServer" serviceId="servyou.soa.developtool.deployServer" name="自动部署服务" x="560" y="184" width="80" height="80" type="choreography"/>
+			<node id="jdls.soa.logic.switchLogic" serviceId="jdls.soa.logic.switchLogic" name="存在Server?" x="376" y="184" width="100" height="80" type="basic"/>
+			<node id="jdls.soa.logic.calculateLogic" serviceId="jdls.soa.logic.calculateLogic" name="开始循环调用自动部署服务" x="384" y="56" width="80" height="80" type="basic"/>
+		</serviceNodes>
+		<serviceTransitions>
+			<transition>
+				<fromNode>start</fromNode>
+				<toNode>servyou.soa.developtool.IntegrationPrepareService</toNode>
+				<conditionScript>true</conditionScript>
+				<beforeScript>import cn.com.servyou.foundation.developtool.integration.vo.*;</beforeScript>
+				<paramMappings>
+					<param id="projectConfigXmlFile" name="待集成项目描述文件" valueScript="&quot;[projectConfigXmlFile]&quot;"/>
+					<param id="servers" name="待部署的服务器列表" valueScript="&quot;[servers]&quot;"/>
+				</paramMappings>
+			</transition>
+			<transition>
+				<fromNode>servyou.soa.developtool.IntegrationPrepareService</fromNode>
+				<toNode>servyou.soa.developtool.IntegrationExecuteService</toNode>
+				<conditionScript>true</conditionScript>
+				<beforeScript>ProjectVO projectVO = (ProjectVO)[servyou.soa.developtool.IntegrationPrepareService.out.projectVO];
+serviceContext.setGlobalParam("projectVO",projectVO);</beforeScript>
+				<paramMappings>
+					<param id="projectVO" name="集成项目描述VO对象" valueScript="(ProjectVO)[servyou.soa.developtool.IntegrationPrepareService.out.projectVO]"/>
+				</paramMappings>
+			</transition>
+			<transition>
+				<fromNode>servyou.soa.developtool.IntegrationNotifyService</fromNode>
+				<toNode>end</toNode>
+				<conditionScript>true</conditionScript>
+				<beforeScript></beforeScript>
+				<paramMappings>
+				</paramMappings>
+			</transition>
+			<transition>
+				<fromNode>servyou.soa.developtool.IntegrationExecuteService</fromNode>
+				<toNode>jdls.soa.logic.calculateLogic</toNode>
+				<conditionScript>true</conditionScript>
+				<beforeScript></beforeScript>
+				<paramMappings>
+					<param id="script" name="运算脚本" valueScript="int i=0;"/>
+				</paramMappings>
+			</transition>
+			<transition>
+				<fromNode>jdls.soa.logic.calculateLogic</fromNode>
+				<toNode>jdls.soa.logic.switchLogic</toNode>
+				<conditionScript>true</conditionScript>
+				<beforeScript></beforeScript>
+				<paramMappings>
+				</paramMappings>
+			</transition>
+			<transition>
+				<fromNode>jdls.soa.logic.switchLogic</fromNode>
+				<toNode>servyou.soa.developtool.IntegrationNotifyService</toNode>
+				<conditionScript>i&gt;=projectVO.getServers().size()</conditionScript>
+				<beforeScript></beforeScript>
+				<paramMappings>
+				</paramMappings>
+			</transition>
+			<transition>
+				<fromNode>jdls.soa.logic.switchLogic</fromNode>
+				<toNode>servyou.soa.developtool.deployServer</toNode>
+				<conditionScript>i&lt;projectVO.getServers().size()</conditionScript>
+				<beforeScript>import cn.com.servyou.foundation.developtool.integration.vo.*;
+ServerVO serverVO = (ServerVO)projectVO.getServers().get(i);</beforeScript>
+				<paramMappings>
+					<param id="sourcePath" name="待部署文件存放目录" valueScript="serverVO.getSourcePath()"/>
+					<param id="ip" name="集成私服IP" valueScript="serverVO.getIp()"/>
+					<param id="port" name="集成私服SOA服务端口" valueScript="serverVO.getMasterSoaPort()"/>
+					<param id="fileServerPort" name="集成私服文件服务器端口" valueScript="serverVO.getMasterFileServerPort()"/>
+					<param id="destPath" name="目标服务部署路径" valueScript="serverVO.getDestPath()"/>
+					<param id="logFileName" name="目标服务器日志文件" valueScript="serverVO.getLogFileName()"/>
+					<param id="logPath" name="目标服务器执行日志下载存放集成主机的目录" valueScript="serverVO.getLogPath()"/>
+					<param id="restartCmd" name="目标服务器重启命令脚本" valueScript="serverVO.getRestartCmd()"/>
+					<param id="restartTimeLong" name="重启服务耗费时间" valueScript="serverVO.getRestartTimeLong()"/>
+				</paramMappings>
+			</transition>
+			<transition>
+				<fromNode>servyou.soa.developtool.deployServer</fromNode>
+				<toNode>jdls.soa.logic.calculateLogic</toNode>
+				<conditionScript>true</conditionScript>
+				<beforeScript>i++</beforeScript>
+				<paramMappings>
+					<param id="script" name="运算脚本" valueScript=""/>
+				</paramMappings>
+			</transition>
+			<transition>
+				<fromNode>servyou.soa.developtool.deployServer</fromNode>
+				<toNode>servyou.soa.developtool.IntegrationNotifyService</toNode>
+				<conditionScript>true</conditionScript>
+				<beforeScript></beforeScript>
+				<paramMappings>
+				</paramMappings>
+			</transition>
+		</serviceTransitions>
+		<onErrorNode>servyou.soa.developtool.IntegrationNotifyService</onErrorNode>
+	</choreography>
+
+	<choreography>
+		<serviceId>servyou.soa.logic.daoService</serviceId>
+		<serviceName>通用DAO数据服务</serviceName>
+		<globalParam>
+		</globalParam>
+		<serviceNodes>
+			<node id="start" serviceId="start" name="开始" x="32" y="88" width="80" height="80" type="start"/>
+			<node id="end" serviceId="end" name="结束" x="416" y="88" width="80" height="80" type="end"/>
+			<node id="jdls.soa.dao.executeTask" serviceId="jdls.soa.dao.executeTask" name="执行DAOTask" x="224" y="88" width="80" height="80" type="basic"/>
+		</serviceNodes>
+		<serviceTransitions>
+			<transition>
+				<fromNode>start</fromNode>
+				<toNode>jdls.soa.dao.executeTask</toNode>
+				<conditionScript>true</conditionScript>
+				<beforeScript></beforeScript>
+				<paramMappings>
+					<param id="taskName" name="DAOTask名称" valueScript="[taskName]"/>
+					<param id="param" name="参数" valueScript="[paramXml]"/>
+					<param id="resultType" name="返回结果集类型" valueScript=""/>
+				</paramMappings>
+			</transition>
+			<transition>
+				<fromNode>jdls.soa.dao.executeTask</fromNode>
+				<toNode>end</toNode>
+				<conditionScript>true</conditionScript>
+				<beforeScript></beforeScript>
+				<paramMappings>
+					<param id="result" name="返回XML" valueScript="[jdls.soa.dao.executeTask.out.result]"/>
+					<param id="error" name="错误信息" valueScript=""/>
+				</paramMappings>
+			</transition>
+		</serviceTransitions>
+		<onErrorNode>end</onErrorNode>
+	</choreography>
+
+	<choreography>
+		<serviceId>servyou.soa.logic.queryService</serviceId>
+		<serviceName>通用查询数据服务</serviceName>
+		<globalParam>
+		</globalParam>
+		<serviceNodes>
+			<node id="start" serviceId="start" name="开始" x="48" y="112" width="80" height="80" type="start"/>
+			<node id="end" serviceId="end" name="结束" x="448" y="112" width="80" height="80" type="end"/>
+			<node id="jdls.soa.logic.executeLogic" serviceId="jdls.soa.logic.executeLogic" name="调用LOGIC框架的逻辑构件" x="232" y="112" width="88" height="80" type="basic"/>
+		</serviceNodes>
+		<serviceTransitions>
+			<transition>
+				<fromNode>start</fromNode>
+				<toNode>jdls.soa.logic.executeLogic</toNode>
+				<conditionScript>true</conditionScript>
+				<beforeScript></beforeScript>
+				<paramMappings>
+					<param id="logic-name" name="LOGIC名称" valueScript="[logicName]"/>
+					<param id="param" name="参数" valueScript="[paramXml]"/>
+					<param id="resultType" name="返回结果类型" valueScript="&quot;HashMap&quot;"/>
+					<param id="pageLines" name="pageLines" valueScript="[pageLines]"/>
+					<param id="pageId" name="pageId" valueScript="[pageId]"/>
+					<param id="rowCount" name="rowCount" valueScript="[rowCount]"/>
+				</paramMappings>
+			</transition>
+			<transition>
+				<fromNode>jdls.soa.logic.executeLogic</fromNode>
+				<toNode>end</toNode>
+				<conditionScript>true</conditionScript>
+				<beforeScript></beforeScript>
+				<paramMappings>
+					<param id="result" name="返回结果集XML" valueScript="(String)([jdls.soa.logic.executeLogic.out.result].get(&quot;queryresult&quot;))"/>
+					<param id="rowCount" name="总记录数" valueScript="(String)([jdls.soa.logic.executeLogic.out.result].get(&quot;recordcount&quot;))"/>
+				</paramMappings>
+			</transition>
+		</serviceTransitions>
+		<onErrorNode>end</onErrorNode>
+	</choreography>
+				
+</soaServiceChoreography>

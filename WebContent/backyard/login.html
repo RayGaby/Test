@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<link rel="stylesheet" type="text/css" href="js/plugin/toastr.css" />
+		<link rel="stylesheet" type="text/css" href="login.css"/>
+	</head>
+	<body>
+		<div class="main">
+			<div class="login-container no-select">
+				<dl class="login-list">
+					<dt class="login-item">
+						<h1 class="title">OA自动化办公系统</h1>
+					</dt>
+					<dt class="login-item">
+						<input type="text" name="username" id="username" value="" class="input" placeholder="用户名" autocomplete="off" required="required" pattern="^[a-zA-Z0-9]{3,15}$"/>
+					</dt>
+					<dt class="login-item">
+						<input type="password" name="password" id="password" value="" class="input" placeholder="密码" autocomplete="off" required="required" pattern="^[a-zA-Z0-9]{6,15}$"/>
+					</dt>
+					<dt class="login-item">
+						<input type="button" value="登录" id="login-btn" class="btn blue"/>
+					</dt>
+					<dt class="login-item">
+						<a class="link" id="link-recover">忘记密码，执行找回</a>
+					</dt>
+				</dl>
+			</div>
+		</div>
+		
+		<script src="js/jquery-2.2.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/plugin/toastr.js" type="text/javascript" charset="utf-8"></script>
+		<script src="login.js" type="text/javascript" charset="utf-8"></script>
+		
+	</body>
+</html>

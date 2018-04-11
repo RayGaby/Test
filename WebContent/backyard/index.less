@@ -1,0 +1,285 @@
+body {
+    padding: 0;
+    margin: 0;
+    height: 800/16rem;
+    width: 100%;
+    background-color: #e7e7e7;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+
+}
+.system-bar {
+    height: 90/16rem;
+    //width: inherit;
+    display: flex;
+    background-color: #00B0C2;
+    .system-mark {
+        flex-grow: 1;
+        height: inherit;
+        min-width: 600/16rem;
+        //background-color: darkcyan;
+        a {
+            float: left;
+            display: inline-block;
+            margin: 10/16rem 20/16rem 0 50/16rem;
+            img {
+                height: 70/16rem;
+                width: 70/16rem;
+            }
+        }
+        p {
+            float: left;
+            margin: 0;
+            height: 90/16rem;
+            line-height: 90/16rem;
+            font-size: 24/16rem;
+            font-weight: 900;
+            letter-spacing: 1/16rem;
+            color: rgb(255,255,255);
+        }
+    }
+    .system-icon {
+        flex-grow: 0;
+        flex-shrink: 0;
+        height: inherit;
+        width: 350/16rem;
+        background-color: #00B0C2;
+        margin-left: 650/16rem;
+        a {
+            display: inline-block;
+            margin: 10/16rem 20/16rem 0 10/16rem;
+            img {
+                height: 60/16rem;
+                width: 60/16rem;
+            }
+        }
+    }
+}
+.user-bar {
+    height: 30/16rem;
+    width: inherit;
+    background-color: #D9A868;
+    display: flex;
+    .user-identity {
+        flex-grow: 1;
+        height: inherit;
+        min-width: 600/16rem;
+        p {
+            float: left;
+            margin: 0;
+            height: 30/16rem;
+            line-height: 30/16rem;
+            font-size: 12/16rem;
+            letter-spacing: 1/16rem;
+            color: rgb(255,255,255);
+            &:first-child {
+                margin: 0 0 0 45/16rem;
+            }
+        }
+        a {
+            float: left;
+            margin: 3/16rem 10/16rem 0 40/16rem;
+            img {
+                height: 25/16rem;
+                width: 25/16rem;
+            }
+        }
+
+    }
+    .user-search {
+        flex-grow: 0;
+        flex-shrink: 0;
+        height: inherit;
+        width: 400/16rem;
+        margin-left: 600/16rem;
+        background-color: #D9A868;
+        label {
+            float: left;
+            display: inline-block;
+            width: 75/16rem;
+            height: 30/16rem;
+            line-height: 30/16rem;
+            font-size: 12/16rem;
+            letter-spacing: 1/16rem;
+            color: rgb(255,255,255);
+        }
+        .input {
+            float: left;
+            width: 150/16rem;
+            height: 22/16rem;
+            outline: none;
+            border-radius: 3/16rem;
+            border: solid 1/16rem #e0e0e0;
+            color: #333;
+            font-size: 12/16rem;
+            letter-spacing: 1/16rem;
+            padding-left: 10/16rem;
+            padding-right: 10/16rem;
+            margin: 2/16rem 10/16rem 0 0;
+        }
+        .btn {
+            width: 50/16rem;
+            height: 25/16rem;
+            border-radius: 3/16rem;
+            border: none;
+            font-weight: bold;
+            letter-spacing: 1/16rem;
+            font-size: 12/16rem;
+            margin-top: 2/16rem;
+            //color: rgb(255,255,255);  
+            outline: none;
+            cursor: pointer;
+
+            background-color: #CCCCCC;
+            color: #fff;
+            &:active {
+                background-color: #BDBDBD;
+            }
+        }
+    }
+}
+.main {
+    height: 800/16rem;
+    //width: inherit;
+    display: flex;
+    padding: 15/16rem;
+    .sidebar {
+        height: inherit;
+        width: 230/16rem;
+        flex-grow: 0;
+        flex-shrink: 0;
+        margin-right: 15/16rem;
+        border-radius: 7/16rem;
+        background-color: #404040;
+        .sidebar-title {
+            height: 60/16rem;
+            width: inherit;
+            
+            border-bottom: solid 1/16rem #1ABC9C;
+            img {
+                float: left;
+                height: 20/16rem;
+                width: 20/16rem;
+                margin: 20/16rem 15/16rem 10/16rem 30/16rem;
+            }
+            a {
+                float: left;
+                font-size: 20/16rem;
+                font-weight: 900;
+                color: rgb(255,255,255);
+                line-height: 60/16rem;
+                letter-spacing: 1/16rem;
+            }
+        }
+        .sidebar-content {
+            width: inherit;
+            .nav {
+                margin-top: 10/16rem;
+                padding: 0 5/16rem;
+                list-style: none;
+                li {
+                    background-color: #333;
+                    &:first-child {
+                        border-radius: 10/16rem 10/16rem 0 0;
+                    }
+                    &:last-of-type {
+                        border-radius: 0 0 10/16rem 10/16rem;
+                    }
+                    &:not(:last-of-type) {
+                        border-bottom: 1/16rem dotted #1abc9c;
+                    }
+                    a {
+                        height: 55/16rem;
+                        line-height: 55/16rem;
+                        padding-left: 55/16rem;
+                        font-family: Lobster;
+                        font-size: 18/16rem;
+                        font-weight: normal;
+                        letter-spacing: 1/16rem;
+                        color: #1abc9c;
+                        display: block;
+                        text-decoration: none;
+                        position: relative;
+                        &:hover {
+                            color: #4afcdc;
+                        }
+
+                        img {
+                            position: absolute;
+                            top: 17/16rem;
+                            left: 20/16rem;
+                            height: 25/16rem;
+                            width: 25/16rem;
+                        }
+
+                    }
+                    //第二层
+                    ul {
+                        margin: 0;
+                        padding: 0;
+                        display: none;
+                        list-style: none;
+                        li {
+                            margin: 0;
+                            padding: 0;
+                            clear: both;
+                            &:not(:last-of-type) {
+                                border-bottom: 1/16rem dotted #B94152;
+                            }
+                            a {
+                                height: 43/16rem;
+                                line-height: 43/16rem;
+                                padding: 5/16rem 30/16rem;
+                                font-size: 14/16rem;
+                                letter-spacing: 1/16rem;
+                                color: #333;
+                                background-color: #1abc9c;
+                                font-weight: normal;
+                                &:hover {
+                                    background-color: #09ab8b;
+                                }
+                            }
+                            //第三层
+                            ul {
+                                li {
+                                    margin: 0;
+                                    padding: 0;
+                                    clear: both;
+                                    &:not(:last-of-type) {
+                                        border-bottom: 1/16rem dotted #8A4300;
+                                    }
+                                    a {
+                                        height: 33/16rem;
+                                        line-height: 33/16rem;
+                                        padding: 5/16rem 35/16rem;
+                                        font-size: 12/16rem;
+                                        letter-spacing: 1/16rem;
+                                        color: #ddd;
+                                        background-color: #b94152;
+                                        font-weight: normal;
+                                        &:hover {
+                                            background-color: #a93142;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .main-container {
+            height: inherit;
+            flex-grow: 1;
+            min-width: 1000/16rem;
+            background-color: #FFFFFF;
+            .test {
+                background-color: darkblue;
+            }
+            .page {
+                width: 900/16rem;
+                height: 800/16rem;
+
+            }
+        }
+    }
+}

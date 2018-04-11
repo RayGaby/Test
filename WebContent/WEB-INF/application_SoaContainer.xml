@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+	<applications>
+		<application>
+			<name>SoaContainer</name><!--应用系统标识，需要唯一-->
+			<base-path>SoaContainer</base-path><!--应用系统基本目录-->
+			<config-file-path>config</config-file-path><!--应用系统CONFIG文件目录（相对于基本目录来而言）-->
+			<class-path><!--应用系统CLAS-PATH文件（相对于基本目录来而言）-->
+			</class-path>			
+			<enable>true</enable>	
+			<init-order>1</init-order>
+			<description>交大龙山SOA容器</description><!--应用系统描述-->
+		</application>		
+	</applications>	
+</root>

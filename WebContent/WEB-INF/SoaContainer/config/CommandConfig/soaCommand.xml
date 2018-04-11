@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="gb2312"?>
+<commandConfig>
+
+  <commands>
+  
+  	<!--
+  	  本地调用COMMAND，配置参数说明：
+  	  target-selector：TARGET服务器选择插件，需要实现cn.com.jdls.foundation.architectures.command.commands.xml.config.ITargetSelector接口，
+  	      如果有配置则调用这个接口去获取Target，系统内置了一个轮训的实现：cn.com.jdls.foundation.architectures.command.targets.TargetSelectorOfInTurnArithmetic
+  	  target：具体可以选择的target列表，如果配置了target-selector那么target可以多个，分别用逗号分隔，如“localTarget,remoteETAXNoTx”
+  	-->
+  	<commandMapping
+    	name="ETAXCommand"
+    	type="cn.com.jdls.foundation.architectures.command.commands.ECommand"
+    	target-selector=""    	
+    	target="localTarget" />
+  	
+    <!--远程的不支持分布式事务的EJB COMMAND-->	
+		<commandMapping 
+			name="ETAXCommandNoTx" 
+			type="cn.com.jdlssoft.etax.common.commands.ECommand" 
+			target="remoteETAXNoTx"/>  
+
+    <!--异步消息队列COMMAND-->	
+  	<commandMapping
+    	name="JMSCommand"
+    	type="cn.com.jdls.foundation.architectures.command.commands.ECommand"
+    	target="JMSTarget"/>
+
+	  <!--SOA WINDOWS构件协议适配器服务-->    	
+		<commandMapping 
+			name="SoaAdapterForWindowsCommand" 
+			type="cn.com.jdls.foundation.architectures.command.commands.ECommand" 
+			target="SoaAdapterForWindowsCOM"/> 
+
+		<!-- 权限管理EJB连接的配置信息-->
+     <commandMapping 
+      name="PERMCommand" 
+      type="cn.com.jdls.foundation.architectures.command.commands.ECommand" 
+      target="remotePerm"/>
+	     
+  </commands>
+
+</commandConfig>

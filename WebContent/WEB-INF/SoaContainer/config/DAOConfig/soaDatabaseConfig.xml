@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="GBK"?>
+
+<ROOT>
+  
+	<!--说明app-charset：外部调用者的字符集[ISO8859_1, GB2312]；db-charset：数据库的字符集[ISO8859_1, GB2312]-->
+	<DATABASE db-charset=""  app-charset="">			
+		<!--数据库名[唯一标识，如：jdlsdb]-->
+	  <NAME>mysqltest</NAME>
+	  <!--数据库连接通道[
+			jdbc:根据下面配置的参数通过JDBC获取数据库连接;
+			appserver：根据DATA_SOURCE参数通过应用服务器连接池获取连接;
+			jdls：根据JDLS_CONNECTION_POOL参数通过交大龙山连接池(PoolConfig中配置的ConnectionPool)获取连接]-->
+	  <CONNECT_CHANNEL>jdbc</CONNECT_CHANNEL>
+	  <!--数据库连接JDBC驱动[如：oracle.jdbc.driver.OracleDriver]-->
+	  <DRIVER>com.mysql.jdbc.Driver</DRIVER>
+	  <!--数据库连接URL[如：jdbc:oracle:thin:@80.64.32.6:1521:JdlsEtax]-->
+	  <URL>jdbc:mysql://localhost:3306/mysqltest</URL>
+	  <!--数据库用户名[如：jdls]-->
+	  <USER>root</USER>
+	  <!--数据库用户口令[如：123]-->
+	  <PASSWORD>abc123</PASSWORD>
+	  <!--应用服务器的数据库连接DATASOURCE[如：JDLSDataSource]-->
+	  <DATA_SOURCE>JDBCDataSource</DATA_SOURCE>
+	  <!--JDLS数据库连接池名称[如：JdlsPool]-->
+	  <JDLS_CONNECTION_POOL>TestPool</JDLS_CONNECTION_POOL>
+	  <!--表示进行批量提交时，最多执行的行数，即没多少个SQL命令就要execute一下——不配置表示每100条提交一次-->
+	  <BATCHLINE>200</BATCHLINE>
+	  <DESCRIPTION>数据库描述[如：测试数据库]</DESCRIPTION>   
+	</DATABASE>      
+
+	
+	    	      
+</ROOT>

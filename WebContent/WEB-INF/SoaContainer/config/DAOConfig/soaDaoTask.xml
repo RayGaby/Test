@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="GBK"?>
+
+<ROOT>
+
+	<!--数据库执行任务模板说明如下： <TASK> <NAME>任务名称[程序调用执行唯一标识,如：Zzsybnsr]</NAME> <DATABASE_NAME 
+		selector="值为DATABASE_SELECTOR配置里对应的name,如：virtualdb" featureParam="选择数据库依据的特征参数列表,允许多个参数,格式样例为:[0,0];[0,1],具体就是传入的ArrayList参数里获取到的">任务对应的数据库名[为poolconfig.xml文件中配置的数据库名称,如：ctais如要了解详细信息,请参照poolFramework,]</DATABASE_NAME> 
+		<TYPE>任务类型[select,insert,delete,update]</TYPE> <BATCH>是否按照批处理执行[true,false]</BATCH> 
+		<TRANSACTION>该功能已经作废</TRANSACTION> <EXECUTOR>具体的执行任务体类名,如果不为空则调用该类执行此任务,如果为空,说明使用通用执行体执行</EXECUTOR> 
+		<DESCRIPTION>任务描述[如：增值税一般纳税人申报表的导,]</DESCRIPTION> <SQL> <NAME>SQL语句名称[如：WBJK_SB_ZZS_JXSE]</NAME> 
+		<TYPE>SQL语句类型[query,update,procedure]</TYPE> <CLAUSE repeat="语句是否重复执行[true,false]" 
+		usePreparedStatement="是否采用预编译执行[true,false]" timeout="执行超时,单位为秒,值为0或者空就是永不超时"> 
+		具体的SQL语句 </CLAUSE> <PARAMETER_TYPE_LIST>SQL语句中的参数类型列表,用逗分割,格式为[类型1,...类型2],如果为空则全部默认为STRING类型</PARAMETER_TYPE_LIST> 
+		<DESCRIPTION>SQL语句描述</DESCRIPTION> </SQL> </TASK> -->
+	<TASK>
+		<NAME>example_select_mysql</NAME>
+		<DATABASE_NAME>mysqltest</DATABASE_NAME>
+		<TYPE>select</TYPE>
+		<BATCH>false</BATCH>
+		<TRANSACTION>false</TRANSACTION>
+		<EXECUTOR />
+		<DESCRIPTION></DESCRIPTION>
+		<SQL>
+			<NAME>example_select_mysql</NAME>
+			<TYPE>query</TYPE>
+			<CLAUSE>
+				select * from employee where name = ? 
+			</CLAUSE>
+			<PARAMETER_TYPE_LIST>[string]</PARAMETER_TYPE_LIST>
+			<DESCRIPTION />
+		</SQL>
+	</TASK>
+	<TASK>
+		<NAME>example2_select_mysql</NAME>
+		<DATABASE_NAME>mysqltest</DATABASE_NAME>
+		<TYPE>select</TYPE>
+		<BATCH>false</BATCH>
+		<TRANSACTION>false</TRANSACTION>
+		<EXECUTOR />
+		<DESCRIPTION></DESCRIPTION>
+		<SQL>
+			<NAME>example_select_mysql</NAME>
+			<TYPE>query</TYPE>
+			<CLAUSE>
+				select * from employee where 1=1 
+			</CLAUSE>
+			<PARAMETER_TYPE_LIST>[string]</PARAMETER_TYPE_LIST>
+			<DESCRIPTION />
+		</SQL>
+	</TASK>
+	<TASK>
+		<NAME>example3_select_mysql</NAME>
+		<DATABASE_NAME>mysqltest</DATABASE_NAME>
+		<TYPE>select</TYPE>
+		<BATCH>false</BATCH>
+		<TRANSACTION>false</TRANSACTION>
+		<EXECUTOR />
+		<DESCRIPTION></DESCRIPTION>
+		<SQL>
+			<NAME>example_select_mysql</NAME>
+			<TYPE>query</TYPE>
+			<CLAUSE>
+				select * from employee where name = ? and sex = ?
+			</CLAUSE>
+			<PARAMETER_TYPE_LIST>[string]</PARAMETER_TYPE_LIST>
+			<DESCRIPTION />
+		</SQL>
+	</TASK>
+</ROOT>

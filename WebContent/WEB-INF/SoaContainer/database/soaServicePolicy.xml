@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="gb2312"?>
+
+<soaServicePolicy>
+
+	<!--各个服务构件的运行的代理-->
+	<policy name="agent1" ip="192.168.2.194" port="6666" password="1024">
+		<!--
+			代理中运行的服务构件信息:
+			1.id:服务标识
+			2.name:服务中文名称
+		-->
+		<service id="service1" name="服务1" />
+		<service id="service2" name="服务2" />
+		<service id="service3" name="服务3" />
+	</policy>
+
+</soaServicePolicy>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/base.css" />
+		<link rel="stylesheet" type="text/css" href="../font/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../js/plugin/modal.css" />
+		<link rel="stylesheet" type="text/css" href="../js/plugin/toastr.css" />
+		<link rel="stylesheet" type="text/css" href="employee.css" />
+	</head>
+
+	<body>
+		<div class="main-container">
+			<dl class="tab-list no-select">
+				<dt class="tab-item">用户列表</dt>
+			</dl>
+			<div class="tab-container">
+				<div class="tab-content">
+					<dl class="operation-list no-select">
+						<a class="operation-item" name="add" href="user.html">添加</a>
+						<dt class="operation-item" name="update">修改</dt>
+						<dt class="operation-item" name="delete">删除</dt>
+						<dt class="operation-item" name="infile" id="infile">导入</dt>
+						<dt class="operation-item" name="outfile" id="outfile">导出</dt>
+					</dl>
+					<div class="Infile-container">
+						<div class="filetitle-content">
+							<h1 class="file-title">导入文件</h1>
+							<input type="file" name="file" onchange="fileChange(this);" class="file" id="file" />
+							<div class="file-btn">
+								<input type="button" class="btn red" id="fileImport" name="fileImport" value="导入文件" />
+							</div>
+						</div>
+					</div>
+					<div class="Outfile-container">
+						<form id="export" name="exportForm" class="menu" method="post" action="#">
+							<div class="filetitle-content">
+								<h1 class="file-title">导出文件</h1>
+							</div>
+							<div class="file-btn">
+								<input type="button" class="btn red" name="Excel" id="Excel" value="导出Excel" />
+							</div>
+							<div class="file-btn">
+								<input type="button" class="btn red" name="XML" id="XML" value="导出XML" />
+							</div>
+							<div class="file-btn">
+								<input type="button" class="btn red" name="CSV" id="CSV" value="导出CSV" />
+							</div>
+						</form>
+					</div>
+					<div class="showMember-container">
+						<div class="title-content">
+							<h1 class="title">机构已归档成员</h1>
+						</div>
+						<div class="showtab-content">
+							<table class="member-table" id=member-table>
+								<tr>
+									<th>序号</th>
+									<th>姓名</th>
+									<th>性别</th>
+									<th>电话</th>
+									<th>身份证号</th>
+									<th>学生状态</th>
+								</tr>
+
+							</table>
+
+							<div class="page-content">
+								<dl class="memberpage-list">
+									<dt class="memberpage-item memberpage-info">
+									总计<span id="totalRows"></span>条记录，<span id="currentPage">1</span>/<span id="totalPages"></span>页
+								</dt>
+									<dt class="memberpage-item memberpage-operation">
+									<a name="prevBtn">上一页</a><a name="nextBtn">下一页</a>
+								</dt>
+								</dl>
+							</div>
+						</div>
+						<div class="btn-item">
+							<input type="button" class="btn red" name="save" value="关闭" tabindex="-1" data-index="1" pattern="^[a-zA-Z0-9\u4e00-\u9fa5]{4,30}$" />
+						</div>
+
+					</div>
+					<table class="data-table">
+						<tr>
+							<th></th>
+							<th>序号</th>
+							<th>用户名</th>
+							<th>姓名</th>
+							<th id="archive-item">机构名称</th>
+							<th>角色</th>
+							<th>电话</th>
+							<th>电子信箱</th>
+							<th>用户状态</th>
+						</tr>
+					</table>
+					<dl class="page-list no-select">
+						<dt class="page-item page-info">
+						总计<span id="totalRows"></span>条记录，<span id="currentPage">1</span>/<span id="totalPages"></span>页
+					</dt>
+						<dt class="page-item page-operation">
+						<a name="prevBtn">上一页</a> <a class="page-active page-test">1</a> <a class="page-test">2</a> <a class="page-test">3</a> <a class="page-test">4</a> <a class="page-test">5</a> <a name="nextBtn">下一页</a>
+					</dt>
+					</dl>
+				</div>
+
+			</div>
+
+		</div>
+
+		<script src="../js/jquery-2.2.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="sui-miniui.git/mini-all-min.js" type="text/javascript" charset="utf-8"></script>-->
+		<script src="../js/tab.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/plugin/modal.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/plugin/toastr.js" type="text/javascript" charset="utf-8"></script>
+		<script src="employee.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>

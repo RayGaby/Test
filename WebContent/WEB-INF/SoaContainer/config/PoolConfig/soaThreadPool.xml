@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<pool>
+
+ <default-thread-pool>global_thread_pool</default-thread-pool>
+
+ <thread-pool>
+    <name>global_thread_pool</name>
+    <debug>false</debug>
+    <default>false</default>
+    <initial>50</initial>
+    <max>400</max>
+    <max_idle>400</max_idle>
+    <min>50</min>
+    <step_idle>1</step_idle>
+    <time_out>60000</time_out>
+    <pool_queue>cn.com.jdls.foundation.pool.FIFOQueue</pool_queue>
+  </thread-pool>
+
+</pool>
+
+
+

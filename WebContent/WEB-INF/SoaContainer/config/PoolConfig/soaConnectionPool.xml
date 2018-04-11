@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="GB2312"?>
+
+<pool>
+
+	<!--
+	数据库连接配置标准说明如下：
+	<connection-pool>
+	  <name>名称[调用标识，要求唯一]</name> 
+	  <debug>调试标志[false,true]</debug>
+	  <default>是否采用默认参数，如果采用则后面的参数将无效[false，true]</default> 
+	  <initial>初始连接数[2]</initial>
+	  <max>最大连接数[10]</max>
+	  <max_idle>最大空闲连接数,该参数原则上应该和max值保持一样，如[10]（重点说明：1、系统内置一个默认的max_idle值为10个，当配置的最大空闲连接数小于10时候按照以下逻辑进行修正：如果最大连接数大于10，那么，强制修改当前最大空闲连接数为10；如果最大连接数小于10，那么，强制修改当前最大空闲连接数为最大连接数。2、当归还连接时候，假如内存中的最大空闲连接数已经大于等于初始的最大空闲连接数，系统不是立即关闭释放连接，而是等待一个超时，系统内置了一个“连接池存在空闲连接数大于最大空闲连接数的超时时间”，值为30秒，即：假如30秒内一直是内存中的最大空闲连接数已经大于等于初始的最大空闲连接数,那么，30秒后再有请求归还连接时候系统会真正释放和关闭连接。）</max_idle>
+	  <min>最小连接数[1]</min>
+	  <step_idle>增长步长[1]</step_idle>
+	  <time_out>连接空闲最大时间[600000毫秒]</time_out>
+	  <pool_queue>连接池数据结构[cn.com.jdls.foundation.pool. LinkedListQueue(默认),cn.com.jdls.foundation.pool.LIFOQueue, cn.com.jdls.foundation.pool.FIFOQueue]</pool_queue> 
+	  <db-para>
+	    <driverName>数据库驱动类名[如: com.sybase.jdbc2.jdbc.SybDriver]</driverName> 
+	    <url>数据库连接URL串[如: jdbc:sybase:Tds:80.64.16.19:5000/CTAIS_SYBASE]</url> 
+	    <user>用户名[如: z06210136]</user>
+	    <password>口令[支持明文和加密方式，如果是加密那么要以{ENCRYPT}开头，例如:{ENCRYPT}5A6D5858507456485B045C475767555D6C6265076B5E737A6A585406640041405C7D530F62610C0D]</password> 
+	    <testSqlClause listenTimer="0">测试连接SQL语句,如果不为空则每次获取连接时将执行该语句进行连接测试[如: select count(*) from DM_ZSXM],属性listenTimer代表测试连接检测周期(单位：毫秒)，如果不配置或者配置成<=0则代表每次获取连接时候进行测试，如果是其他>0的值，则后台定时按照listenTimer周期检测，获取连接时候不检测</testSqlClause> 
+	    <initSqlClause>初始连接SQL语句,如果不为空则每次创建新的连接时将执行该语句进行初始化[如: set role work_330601000000569 with passwd 'a111222' on]</initSqlClause>
+	  </db-para>
+	  <enable>是否可用[true,false]</enable>
+	</connection-pool>
+	-->
+
+  <default-connection-pool>global_connection_pool</default-connection-pool>
+
+  <connection-pool>
+    <name>TestPool</name>
+    <debug>true</debug>
+    <default>false</default>
+    <initial>5</initial>
+    <max>10</max>
+    <max_idle>10</max_idle>
+    <min>5</min>
+    <step_idle>1</step_idle>
+    <time_out>60000</time_out>
+    <pool_queue></pool_queue>
+    <db-para>
+      <driverName>oracle.jdbc.driver.OracleDriver</driverName>
+      <url>jdbc:oracle:thin:@localhost:1521:xe</url>
+      <user>oracletest</user>
+      <password>abc123</password>
+      <testSqlClause>select * from dual</testSqlClause>
+      <initSqlClause></initSqlClause>
+    </db-para>
+    <enable>true</enable>
+  </connection-pool>
+
+</pool>
+
+
+
