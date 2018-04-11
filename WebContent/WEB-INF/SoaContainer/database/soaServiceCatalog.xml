@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="gb2312"?>
-<soaServiceCatalog>
-      <catalog id="app" name="应用目录" fatherCatalogId="" description="应用目录" />
-      <catalog id="system" name="系统目录" fatherCatalogId="" description="系统目录" />
-      <catalog id="system.dao" name="数据库" fatherCatalogId="system" description="数据库" />
-      <catalog id="system.developtool" name="开发工具" fatherCatalogId="system" description="开发工具" />
-      <catalog id="system.logic" name="业务逻辑" fatherCatalogId="system" description="业务逻辑" />
-</soaServiceCatalog>

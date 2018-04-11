@@ -1,4 +1,0 @@
-2017-04-18 10:09:16,341 [main] INFO  
-				select * from employee where 1=1 
-			  and (name = 'ParamName')  and (sex = 'ParamSex') ;
-
