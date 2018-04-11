@@ -58,14 +58,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/ProductPlat-TyService-1.1.018.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/ProductPlat-ZsService-1.1.018.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/securityAPI-1.0.004.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/ServyouFoundation_Cache-1.1.003.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/ServyouFoundation_Core-1.0.027.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/ServyouFoundation_log-1.0.005.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/ServyouFoundation_log4jext-1.0.000.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/ServyouFoundation_Util-1.0.003.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/ServyouFoundation_WebComponent-1.0.001.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/ServyouFoundation_Webfaster-1.0.000.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/ServyouSnmp-1.0.003.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/SVSClient-1.0.001.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/swmh-filter-jdk1.6-1.0.001.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/SzWslz-1.0.001.jar"/>

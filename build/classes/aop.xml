@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
+
+	<bean id="helloWorldImpl1" class="cn.com.mine.springaop.HelloWorldImpl1" />
+	<bean id="helloWorldImpl2" class="cn.com.mine.springaop.HelloWorldImpl2" />
+	<bean id="helloWorldImpl3" class="cn.com.mine.springaop.HelloWorldImpl3" />
+	<bean id="myInterceptor" class="cn.com.mine.springaop.MyInterceptor" />
+	<bean id="timeHandler" class="cn.com.mine.springaop.TimeHandler" />
+	<bean id="logHandler" class="cn.com.mine.springaop.LogHandler" />
+
+	<aop:aspectj-autoproxy />
+	<aop:config proxy-target-class="true">
+		<aop:aspect id="time" ref="timeHandler" order="1">
+			<aop:pointcut id="addAllMethod" expression="execution(* cn.com.mine.springaop.HelloWorld.*(..))" />
+			<aop:before method="printTime" pointcut-ref="addAllMethod" />
+			<aop:after method="printTime" pointcut-ref="addAllMethod" />
+		</aop:aspect>
+		<aop:aspect id="log" ref="logHandler" order="2">
+			<aop:pointcut id="printLog" expression="execution(* cn.com.mine.springaop.HelloWorld.*(..))" />
+			<aop:before method="LogBefore" pointcut-ref="printLog" />
+			<aop:after method="LogAfter" pointcut-ref="printLog" />
+		</aop:aspect>
+	</aop:config>
+
+	<!-- 定义一个代理类 -->
+	<!-- <context:component-scan base-package="cn.com.mine.springaop.*"></context>
+	<bean id="springProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interfaces" value="cn.com.mine.springaop.HelloWorld" />  需要动态实现的接口
+		<property name="target" ref="helloWorldImpl1" /> 目标类，打招呼的实现类
+		<property name="interceptorNames" value="timeHandler"></property>  引入增强类
+		<property name="proxyTargetClass" value="true"></property>
+	</bean> -->
+
+</beans>

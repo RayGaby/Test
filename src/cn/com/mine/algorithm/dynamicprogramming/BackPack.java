@@ -1,5 +1,11 @@
 package cn.com.mine.algorithm.dynamicprogramming;
 
+/**
+ * 0-1背包问题
+ * 
+ * @author Ray
+ *
+ */
 public class BackPack {
 	public static void main(String[] args) {
 		// 所有的物品
@@ -15,7 +21,7 @@ public class BackPack {
 	    int[][] bestValues = new int[n + 1][totalWeight + 1]; // 考虑0的状态+1，防止数组角标越界
 	    // 最终背包中最大价值
 	    int bestValue;	    
-	    backPack(bags, n, totalWeight, bestValues);
+	    System.out.println("最大价值:"+backPack(bags, n, totalWeight, bestValues));
 	}
 
 	public static int backPack(Knapsack[] bags, int n, int totalWeight, int[][] bestValues) {
