@@ -1,7 +1,5 @@
 package cn.com.mine.algorithm.dynamicprogramming;
 
-import cn.com.mine.algorithm.dynamicprogramming.Knapsack;
-
 public class BackPack {
 	public static void main(String[] args) {
 		// 所有的物品
@@ -17,7 +15,7 @@ public class BackPack {
 	    int[][] bestValues = new int[n + 1][totalWeight + 1]; // 考虑0的状态+1，防止数组角标越界
 	    // 最终背包中最大价值
 	    int bestValue;	    
-	    System.out.println(backPack(bags, n, totalWeight, bestValues));
+	    backPack(bags, n, totalWeight, bestValues);
 	}
 
 	public static int backPack(Knapsack[] bags, int n, int totalWeight, int[][] bestValues) {
@@ -27,15 +25,17 @@ public class BackPack {
 					bestValues[i][j] = 0;//初始化状态
 				}
 				else {
-					if (bags[i].getWeight() > j) {
+					if (bags[i-1].getWeight() > j) {
 						bestValues[i][j] = bestValues[i-1][j];
 					}
 					else {
-						int plusCurrent = bestValues[i-1][j-bags[i].getWeight()] + bags[i].getValue();
+						int plusCurrent = bestValues[i-1][j-bags[i-1].getWeight()] + bags[i-1].getValue();
 						bestValues[i][j] = plusCurrent > bestValues[i-1][j]? plusCurrent:bestValues[i-1][j];
 					}
 				}
+				System.out.print(bestValues[i][j] + " ");
 			}
+			System.out.println();
 		}
 	    return bestValues[n][totalWeight];
 	}
