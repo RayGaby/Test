@@ -3,6 +3,11 @@ package cn.com.mine.algorithm.dynamicprogramming;
 /**
  * 0-1背包问题
  * 
+ * 状态转移方程
+ * 
+ * 1) j<w(i)  V(i,j)=V(i-1,j)
+ * 2) j>=w(i) V(i,j)=max｛ V(i-1,j)，V(i-1,j-w(i))+v(i)｝
+ * 
  * @author Ray
  *
  */
@@ -20,7 +25,7 @@ public class BackPack {
 	    // 第一维：当前第几个物品；第二维：当前的背包承重；值：当前背包最大价值
 	    int[][] bestValues = new int[n + 1][totalWeight + 1]; // 考虑0的状态+1，防止数组角标越界
 	    // 最终背包中最大价值
-	    int bestValue;	    
+	    //int bestValue;	    
 	    System.out.println("最大价值:"+backPack(bags, n, totalWeight, bestValues));
 	}
 
@@ -35,8 +40,7 @@ public class BackPack {
 						bestValues[i][j] = bestValues[i-1][j];
 					}
 					else {
-						int plusCurrent = bestValues[i-1][j-bags[i-1].getWeight()] + bags[i-1].getValue();
-						bestValues[i][j] = plusCurrent > bestValues[i-1][j]? plusCurrent:bestValues[i-1][j];
+						bestValues[i][j] = Math.max(bestValues[i-1][j-bags[i-1].getWeight()] + bags[i-1].getValue(), bestValues[i-1][j]);
 					}
 				}
 				System.out.print(bestValues[i][j] + " ");
