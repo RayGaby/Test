@@ -1,0 +1,2 @@
+className = cn.com.mine.reflect.basic.Student
+methodName = show

@@ -6,10 +6,10 @@ import java.util.Stack;
 public class QuickSort {
 	public static void main(String[] args) {
 		int[] array = {3,6,1,0,-2,7,2,3};
-//		quickSortRecursion(array, 0, array.length-1);
-//		System.out.println(Arrays.toString(array));
-		Arrays.sort(array);
+		quickSortRecursion(array, 0, array.length-1);
 		System.out.println(Arrays.toString(array));
+//		Arrays.sort(array);
+//		System.out.println(Arrays.toString(array));
 //		quickSort(array, 0, array.length-1);
 		
 	}
