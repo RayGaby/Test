@@ -4,7 +4,13 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class MyThread3 {
+/**
+ * 比如有一个任务A，它要等待其他4个任务执行完毕之后才能执行，此时就可以利用CountDownLatch来实现这种功能了。
+ * 
+ * @author Ray
+ *
+ */
+public class CountDownLatchDemo {
 
     // 模拟了100米赛跑，10名选手已经准备就绪，只等裁判一声令下。当所有人都到达终点时，比赛结束。
     public static void main(String[] args) throws InterruptedException {
