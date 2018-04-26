@@ -1,4 +1,4 @@
-package cn.com.mine.basic;
+package cn.com.mine.dataStruction.List;
 
 public class InsertTwoArray {
 	public static void main(String[] args) {

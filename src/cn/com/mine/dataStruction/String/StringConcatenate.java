@@ -1,4 +1,4 @@
-package cn.com.mine.basic.String;
+package cn.com.mine.dataStruction.String;
 
 
 public class StringConcatenate {

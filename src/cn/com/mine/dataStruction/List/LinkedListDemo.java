@@ -1,4 +1,4 @@
-package cn.com.mine.basic;
+package cn.com.mine.dataStruction.List;
 
 import java.util.Iterator;
 import java.util.LinkedList;

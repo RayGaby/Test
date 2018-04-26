@@ -1,4 +1,4 @@
-package cn.com.mine.basic;
+package cn.com.mine.dataStruction.List;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,7 +30,6 @@ public class ArrayListTraverse {
 		}
 
 		// 第三种遍历 使用迭代器进行相关遍历
-
 		Iterator<String> ite = list.iterator();
 		while (ite.hasNext())// 判断下一个元素之后有值
 		{

@@ -22,7 +22,7 @@ import java.util.List;
 public class TCFExcuteOrders {
 	
 	public static void main(String[] args) {
-		System.out.println(testBasic6());
+		System.out.println(testBasic2());
 	}
 
 	public static int testBasic1() {

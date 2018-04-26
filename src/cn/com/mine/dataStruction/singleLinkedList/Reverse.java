@@ -1,4 +1,4 @@
-package cn.com.mine.basic.singleLinkedList;
+package cn.com.mine.dataStruction.singleLinkedList;
 
 public class Reverse {
 	public static void main(String[] args) {
