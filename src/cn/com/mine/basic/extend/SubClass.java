@@ -22,7 +22,7 @@ public class SubClass extends SuperClass{
 	public SubClass() {
 		System.out.println("a is" + a);
 	}
-	public int getA() {
+	public int getA() {;
 		return a;
 	}
 	public static void main(String[] args) {
